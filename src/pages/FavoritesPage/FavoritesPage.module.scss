@@ -1,0 +1,19 @@
+.container {
+  padding: 0 calc(62px * var(--scale));
+  padding-top: calc(112px * var(--scale));
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 46px;
+}
+
+.empty {
+  font-size: 14px;
+  font-weight: 400;
+  text-align: center;
+  margin-top: calc(52px * var(--scale));
+  margin-bottom: calc(32px * var(--scale));
+}

@@ -1,0 +1,78 @@
+:root {
+  --scale: 1;
+  --main-width: 1305px;
+}
+
+@media (min-width: 4320px) {
+  :root {
+    --scale: 4;
+  }
+}
+@media (min-width: 2880px) and (max-width: 4321px) {
+  :root {
+    --scale: 3.03;
+  }
+}
+@media (min-width: 2160px) and (max-width: 2881px) {
+  :root {
+    --scale: 2;
+  }
+}
+@media (min-width: 1920px) and (max-width: 2161px) {
+  :root {
+    --scale: 1.49;
+  }
+}
+@media (min-width: 1800px) and (max-width: 1921px) {
+  :root {
+    --scale: 1.33;
+  }
+}
+@media (min-width: 1600px) and (max-width: 1801px) {
+  :root {
+    --scale: 1.25;
+  }
+}
+@media (min-width: 1500px) and (max-width: 1601px) {
+  :root {
+    --scale: 1.1;
+  }
+}
+@media (min-width: 1440px) and (max-width: 1501px) {
+  :root {
+    --scale: 1;
+  }
+}
+@media (min-width: 1308px) and (max-width: 1439px) {
+  :root {
+    --scale: 0.9;
+  }
+}
+@media (min-width: 1152px) and (max-width: 1307px) {
+  :root {
+    --scale: 0.8;
+  }
+}
+@media (min-width: 961px) and (max-width: 1151px) {
+  :root {
+    --scale: 0.66;
+  }
+}
+@media (min-width: 600px) and (max-width: 960px) {
+  :root {
+    --scale: 0.8;
+    --main-width: 795px;
+  }
+}
+@media (max-width: 601px) {
+  :root {
+    --scale: 0.6;
+    --main-width: 540px;
+  }
+}
+@media (max-width: 301px) {
+  :root {
+    --scale: 0.5;
+    --main-width: 540px;
+  }
+}

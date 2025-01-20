@@ -1,0 +1,70 @@
+.card {
+  display: flex;
+  position: relative;
+  text-align: center;
+  height: calc(225px * var(--scale));
+  width: calc(225px * var(--scale));
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.14);
+    box-shadow:
+      0px 6px 5px rgba(0, 0, 0, 0.24),
+      0px 9px 18px rgba(0, 0, 0, 0.18);
+  }
+
+  button {
+    position: absolute;
+    bottom: calc(21px * var(--scale));
+    right: calc(27px * var(--scale));
+    transition: transform 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  &:hover button {
+    transform: scale(1.14);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.img {
+  &-cat {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition: box-shadow 0.3s ease;
+  }
+
+  &-fav {
+    width: calc(30.78px * var(--scale));
+    height: calc(28.24px * var(--scale));
+    transition: transform 0.3s ease;
+  }
+}
+
+.img-spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  .img-spinner {
+    width: calc(100px * var(--scale));
+    height: calc(100px * var(--scale));
+    animation: rotation 2s infinite linear;
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
