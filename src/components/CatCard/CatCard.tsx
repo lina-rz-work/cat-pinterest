@@ -40,11 +40,7 @@ const CatCard: React.FC<Cat> = (cat) => {
 
   return (
     <div className={styles.card}>
-      {!imgLoaded && (
-        <div className={styles['img-spinner-container']}>
-          <img className={styles['img-spinner']} src={spinner} alt="spinner" />
-        </div>
-      )}
+      {!imgLoaded && <span className={styles.loader}></span>}
       {img}
 
       {imgLoaded && (

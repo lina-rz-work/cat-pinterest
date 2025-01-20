@@ -13,7 +13,9 @@ const initialState: CatsState = {
   error: null,
 };
 
-const API_URL = 'https://api.thecatapi.com/v1/images/search';
+// const API_URL = 'https://api.thecatapi.com/v1/images/search';
+const API_URL =
+  'https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=beng&api_key=REPLACE_ME';
 
 export const loadMoreCats = createAsyncThunk(
   'cats/loadMoreCats',
