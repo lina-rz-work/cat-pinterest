@@ -1,22 +1,33 @@
 import React, { useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { loadMoreCats } from '../../features/cats/catsSlice';
+import { loadMoreCats, resetCats } from '../../features/cats/catsSlice';
 import CatCard from '../../components/CatCard/CatCard';
 import styles from './AllCatsPage.module.scss';
 
 const AllCatsPage: React.FC = () => {
   const dispatch = useAppDispatch();
-  const { items, status } = useAppSelector((state) => state.cats);
+  const { items, status, selectedBreedId, page, hasMore } = useAppSelector(
+    (state) => state.cats
+  );
 
   useEffect(() => {
-    if (status === 'idle') {
-      dispatch(loadMoreCats({ limit: 10 }));
-    }
-  }, [dispatch, status]);
+    dispatch(resetCats());
+    dispatch(
+      loadMoreCats({
+        limit: 10,
+        page: 0,
+        breedId: selectedBreedId || undefined,
+      })
+    );
+  }, [dispatch, selectedBreedId]);
 
   const fetchMoreData = () => {
-    dispatch(loadMoreCats({ limit: 10 }));
+    if (status !== 'loading' && hasMore) {
+      dispatch(
+        loadMoreCats({ limit: 10, page, breedId: selectedBreedId || undefined })
+      );
+    }
   };
 
   return (
@@ -25,17 +36,18 @@ const AllCatsPage: React.FC = () => {
         style={{ height: 'unset', overflow: 'unset' }}
         dataLength={items.length}
         next={fetchMoreData}
-        hasMore={true}
-        loader={<p></p>}
-        endMessage={<p>все котики загружены</p>}
+        hasMore={hasMore}
+        loader={
+          <p className={styles['end-msg']}>... загружаем еще котиков ...</p>
+        }
+        endMessage={<p className={styles['end-msg']}>все котики загружены</p>}
       >
-        <div className={styles.flex}>
+        <div className={styles.grid}>
           {items.map((cat) => (
             <CatCard key={cat.id} {...cat} />
           ))}
         </div>
       </InfiniteScroll>
-      <p className={styles['end-msg']}>... загружаем еще котиков ...</p>
     </div>
   );
 };

@@ -1,0 +1,36 @@
+.select-container {
+  max-width: 300px;
+  min-width: calc(215px * var(--scale));
+  margin: 0px auto;
+  font-size: 12px;
+}
+
+.custom-select {
+  &__control {
+    height: 32px; // Устанавливает общую высоту выпадающего списка
+    min-height: 32px; // Минимальная высота элемента управления
+    padding: 0; // Убирает внутренние отступы
+    font-size: 14px; // Уменьшает размер шрифта
+  }
+
+  &__value-container {
+    padding: 0 8px; // Уменьшает внутренние отступы контейнера значения
+  }
+
+  &__indicator {
+    padding: 4px; // Уменьшает отступы вокруг индикаторов (стрелок, крестиков)
+  }
+
+  &__menu {
+    font-size: 14px; // Уменьшает размер текста в меню
+  }
+
+  &__option {
+    padding: 6px 8px; // Уменьшает отступы внутри каждой опции
+    font-size: 14px; // Размер шрифта для каждой опции
+  }
+
+  &__placeholder {
+    font-size: 14px; // Уменьшает размер текста-заполнителя
+  }
+}

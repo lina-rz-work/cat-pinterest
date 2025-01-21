@@ -2,10 +2,12 @@ import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import catsReducer from '../features/cats/catsSlice';
+import breedsReducer from '../features/breeds/breedsSlice';
 import favoritesReducer from '../features/favorites/favoritesSlice';
 
 const rootReducer = combineReducers({
   cats: catsReducer,
+  breeds: breedsReducer,
   favorites: favoritesReducer,
 });
 

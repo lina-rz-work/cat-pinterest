@@ -9,7 +9,7 @@ const FavoritesPage: React.FC = () => {
   return (
     <div className={styles.container}>
       {favorites.length ? (
-        <div className={styles.flex}>
+        <div className={styles.grid}>
           {favorites.map((cat) => (
             <CatCard key={cat.id} {...cat} />
           ))}
