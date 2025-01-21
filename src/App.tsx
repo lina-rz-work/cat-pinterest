@@ -7,7 +7,7 @@ import './styles/style.scss';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/cat-pinterest">
       <Navbar />
       <Routes>
         <Route path="/" element={<AllCatsPage />} />
