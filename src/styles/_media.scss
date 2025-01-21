@@ -3,26 +3,6 @@
   --main-width: 1305px;
 }
 
-@media (min-width: 4320px) {
-  :root {
-    --scale: 4;
-  }
-}
-@media (min-width: 2880px) and (max-width: 4321px) {
-  :root {
-    --scale: 3.03;
-  }
-}
-@media (min-width: 2160px) and (max-width: 2881px) {
-  :root {
-    --scale: 2;
-  }
-}
-@media (min-width: 1920px) and (max-width: 2161px) {
-  :root {
-    --scale: 1.49;
-  }
-}
 @media (min-width: 1800px) and (max-width: 1921px) {
   :root {
     --scale: 1.33;
