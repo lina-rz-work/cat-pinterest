@@ -36,14 +36,6 @@ const BreedSelect: React.FC = () => {
   const handleChange = (selectedOption: Option | null) => {
     const breedId = selectedOption?.value || null;
     dispatch(selectBreed(breedId));
-    dispatch(resetCats());
-    dispatch(
-      loadMoreCats({
-        limit: 10,
-        page: 0,
-        breedId: breedId || undefined,
-      })
-    );
   };
 
   return (

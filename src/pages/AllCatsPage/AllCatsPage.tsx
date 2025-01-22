@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { loadMoreCats, resetCats } from '../../features/cats/catsSlice';
+import { loadMoreCats, resetCats, LIMIT } from '../../features/cats/catsSlice';
 import CatCard from '../../components/CatCard/CatCard';
 import styles from './AllCatsPage.module.scss';
 
@@ -15,7 +15,7 @@ const AllCatsPage: React.FC = () => {
     dispatch(resetCats());
     dispatch(
       loadMoreCats({
-        limit: 10,
+        limit: LIMIT,
         page: 0,
         breedId: selectedBreedId || undefined,
       })
@@ -23,15 +23,26 @@ const AllCatsPage: React.FC = () => {
   }, [dispatch, selectedBreedId]);
 
   const fetchMoreData = () => {
-    if (status !== 'loading' && hasMore) {
+    if (hasMore) {
       dispatch(
-        loadMoreCats({ limit: 10, page, breedId: selectedBreedId || undefined })
+        loadMoreCats({
+          limit: LIMIT,
+          page: page,
+          breedId: selectedBreedId || undefined,
+        })
       );
     }
   };
 
   return (
-    <div className={styles.container}>
+    <div
+      className={styles.container}
+      id="scrollableDiv"
+      style={{
+        height: '100vh',
+        overflow: 'auto',
+      }}
+    >
       <InfiniteScroll
         style={{ height: 'unset', overflow: 'unset' }}
         dataLength={items.length}
@@ -41,6 +52,7 @@ const AllCatsPage: React.FC = () => {
           <p className={styles['end-msg']}>... загружаем еще котиков ...</p>
         }
         endMessage={<p className={styles['end-msg']}>все котики загружены</p>}
+        scrollableTarget="scrollableDiv"
       >
         <div className={styles.grid}>
           {items.map((cat) => (

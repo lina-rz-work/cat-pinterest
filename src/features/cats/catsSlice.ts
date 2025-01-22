@@ -23,8 +23,8 @@ const initialState: CatsState = {
   hasMore: true,
 };
 
-// Замените "REPLACE_ME" на свой реальный API_KEY, если нужно
-const API_KEY = 'REPLACE_ME';
+const API_KEY =
+  'live_36K7ieTsxmzDCpic7ZAw1gb0BuWsXvOmYAg1065oJ0BU4vRQKDegWCHRMViUtdYx';
 const BASE_URL = 'https://api.thecatapi.com/v1/images/search';
 
 export const loadMoreCats = createAsyncThunk<
@@ -63,6 +63,8 @@ export const loadMoreCats = createAsyncThunk<
   }
 );
 
+export const LIMIT = 20;
+
 const catsSlice = createSlice({
   name: 'cats',
   initialState,
@@ -78,30 +80,18 @@ const catsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loadMoreCats.pending, (state) => {
-        state.status = 'loading';
-        state.error = null;
-      })
-      // .addCase(loadMoreCats.fulfilled, (state, action) => {
-      //   state.status = 'succeeded';
-      //   state.items.push(...action.payload);
-      //   state.page += 1;
-      // })
       .addCase(loadMoreCats.fulfilled, (state, action) => {
         state.status = 'succeeded';
         const newCats = action.payload.filter(
           (cat) => !state.items.some((existingCat) => existingCat.id === cat.id)
         );
 
-        console.log(newCats);
-
-        if (newCats.length === 0) {
-          state.hasMore = false;
-          return;
-        }
-
         state.items.push(...newCats);
-        state.page += 1;
+        state.page++;
+
+        if (action.payload.length < LIMIT || newCats.length === 0) {
+          state.hasMore = false;
+        }
       })
       .addCase(loadMoreCats.rejected, (state, action) => {
         state.status = 'failed';
